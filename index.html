@@ -1,14 +1,60 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <div>test</div>
-    <script src="app.js"></script>
-  </body>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="wrapper">
+    <div class="container__left">
+      <section class="checkout">
+        <div class="checkout__left">
+          <div class="checkout__totalSales cube">
+            <label for="">Total Sales</label>
+            <input type="text" id="totalSales__input" class="checkout__input">
+          </div>
+          <div class="checkout__totalCcTips cube">
+            <label for="">CC Tips</label>
+            <input type="text" id="CcTips__input" class="checkout__input">
+          </div>
+        </div>
+
+        <div class="checkout__right">
+          <div class="checkout__totalCashTips cube">
+            <label for="">Cash Tips</label>
+            <input type="text" id="cashTips__input" class="checkout__input">
+          </div>
+          <div class="checkout__MDRTips cube">
+            <label for="">MDR Tips</label>
+            <input type="text" id="MdrTips__input" class="checkout__input">
+          </div>
+        </div>
+      </section>
+
+      <section class="group">
+        <div class="group__left">
+          <label for="">Group Name</label>
+          <input type="text">
+          <label for="">hours</label>
+          <input type="text">
+        </div>
+
+        <div class="group__right">
+          <label for="">number</label>
+          <input type="number">
+          <label for="">minutes</label>
+          <input type="text">
+        </div>
+      </section>
+    </div>
+
+
+  </div>
+  <script src="app.js"></script>
+</body>
+
 </html>
