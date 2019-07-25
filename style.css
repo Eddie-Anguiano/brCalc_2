@@ -7,6 +7,8 @@
   padding: 0;
   margin: 0;
   font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  letter-spacing: .2rem;
   /* border: 1px solid red; */
 }
 
@@ -16,26 +18,25 @@
 
 body {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#363949+0,363949+55,4678bf+100 */
-  background: #363949; /* Old browsers */
-  background: -moz-linear-gradient(
-    -45deg,
-    #363949 0%,
-    #363949 55%,
-    #4678bf 100%
-  ); /* FF3.6-15 */
-  background: -webkit-linear-gradient(
-    -45deg,
-    #363949 0%,
-    #363949 55%,
-    #4678bf 100%
-  ); /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(
-    135deg,
-    #363949 0%,
-    #363949 55%,
-    #4678bf 100%
-  ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#363949', endColorstr='#4678bf',GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+  background: #363949;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg,
+      #363949 0%,
+      #363949 55%,
+      #4678bf 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg,
+      #363949 0%,
+      #363949 55%,
+      #4678bf 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg,
+      #363949 0%,
+      #363949 55%,
+      #4678bf 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#363949', endColorstr='#4678bf', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
 }
 
 body,
@@ -61,6 +62,14 @@ html {
 label {
   display: block;
   padding: 0 0 0.5rem 4rem;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 2rem;
+  font-size: 3rem;
+  color: white;
+  font-family: 'Roboto Slab', serif;
 }
 
 /*----------------------------------------------------*/
@@ -91,6 +100,10 @@ label {
   flex-wrap: wrap;
   justify-content: space-around;
   font-size: 1.5rem;
+}
+
+.checkout__header {
+  color: #4678bf;
 }
 
 .dollar {
@@ -129,6 +142,10 @@ label {
   margin-top: 2rem;
 }
 
+.group__header {
+  color: #346149;
+}
+
 .group__top,
 .group__bottom {
   display: flex;
@@ -148,7 +165,7 @@ label {
 }
 
 .--smallInput {
-  max-width: 95px;
+  max-width: 110px;
 }
 
 .--largeInput {
@@ -192,6 +209,7 @@ label {
   left: 25%;
   top: 43.75%;
 }
+
 .vertical-plus {
   position: relative;
   background-color: #ffffff;
