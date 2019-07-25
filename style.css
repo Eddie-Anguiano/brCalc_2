@@ -54,14 +54,6 @@ html {
   flex-wrap: wrap;
 }
 
-/* .wrapper {
-  max-width: 1920px;
-  width: 85%;
-  margin: 0 auto;
-  border: 1px solid red;
-  background-color: red;
-} */
-
 .cube {
   padding: 0.8rem;
 }
@@ -76,18 +68,14 @@ label {
 /*----------------------------------------------------*/
 
 .container__left {
-  /* width: 48%; */
   flex: 1 1 522px;
   max-width: 645px;
   font-size: 1.6rem;
-  /* border: 1px solid red; */
 }
 
 .container__right {
-  /* width: 48%; */
   flex: 1 1 522px;
   max-width: 645px;
-  /* border: 1px solid red; */
   min-height: 80vh;
 }
 
@@ -139,23 +127,16 @@ label {
   border-radius: 1rem;
   padding: 2rem;
   margin-top: 2rem;
-  /* display: flex;
-  flex-wrap: wrap;
-  justify-content: center; */
-  /* flex-direction: row; */
 }
 
 .group__top,
 .group__bottom {
   display: flex;
   border: 1px solid red;
-  /* flex-wrap: wrap; */
   justify-content: center;
-  /* width: 100%; */
 }
 
 .group__input {
-  /* width: auto; */
   padding: 1.2rem;
   border-radius: 1rem;
   color: white;
@@ -164,8 +145,6 @@ label {
   border: none;
   font-size: 1.5rem;
   width: 100%;
-  /* min-width: 50px;
-  max-width: 300px; */
 }
 
 .--smallInput {
@@ -191,16 +170,6 @@ label {
 .group__minutes {
   flex: 1;
 }
-
-/* .group__hours {
-  text-align: right;
-} */
-
-/* #number__input,
-#hours__input,
-#minutes__input {
-  width: auto;
-} */
 
 .submit {
   height: 10rem;
