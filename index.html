@@ -13,87 +13,92 @@
 
   <body>
     <div class="container--flex">
-      <div class="wrapper">
-        <div class="container__left">
-          <section class="checkout">
-            <div class="checkout__left">
-              <div class="checkout__totalSales cube">
-                <label for="">Total Sales</label>
-                <div class="dollar">$</div>
-                <input
-                  type="text"
-                  id="totalSales__input"
-                  class="checkout__input"
-                />
-              </div>
-              <div class="checkout__totalCcTips cube">
-                <label for="">CC Tips</label>
-                <div class="dollar">$</div>
-                <input type="text" id="CcTips__input" class="checkout__input" />
-              </div>
+      <!-- <div class="wrapper"> -->
+      <div class="container__left">
+        <section class="checkout">
+          <div class="checkout__left">
+            <div class="checkout__totalSales cube">
+              <label for="">Total Sales</label>
+              <div class="dollar">$</div>
+              <input
+                type="text"
+                id="totalSales__input"
+                class="checkout__input"
+              />
             </div>
+            <div class="checkout__totalCcTips cube">
+              <label for="">CC Tips</label>
+              <div class="dollar">$</div>
+              <input type="text" id="CcTips__input" class="checkout__input" />
+            </div>
+          </div>
 
-            <div class="checkout__right">
-              <div class="checkout__totalCashTips cube">
-                <label for="">Cash Tips</label>
-                <div class="dollar">$</div>
-                <input
-                  type="text"
-                  id="cashTips__input"
-                  class="checkout__input"
-                />
-              </div>
-              <div class="checkout__MDRTips cube">
-                <label for="">MDR Tips</label>
-                <div class="dollar">$</div>
-                <input
-                  type="text"
-                  id="MdrTips__input"
-                  class="checkout__input"
-                />
-              </div>
+          <div class="checkout__right">
+            <div class="checkout__totalCashTips cube">
+              <label for="">Cash Tips</label>
+              <div class="dollar">$</div>
+              <input type="text" id="cashTips__input" class="checkout__input" />
             </div>
-          </section>
+            <div class="checkout__MDRTips cube">
+              <label for="">MDR Tips</label>
+              <div class="dollar">$</div>
+              <input type="text" id="MdrTips__input" class="checkout__input" />
+            </div>
+          </div>
+        </section>
 
-          <section class="group">
-            <div class="group__left">
-              <div class="group__name cube">
-                <!-- <label for="name__input">Group Name</label> -->
-                <input type="text" id="name__input" class="group__input" />
-              </div>
-              <div class="group__hours cube">
-                <!-- <label id="label" for="hours__input">Time Worked</label> -->
-                <!-- <span class="hour--center">Time Worked</span> -->
-                <input
-                  type="text"
-                  id="hours__input"
-                  class="group__input"
-                  placeholder="Hours"
-                />
-              </div>
+        <section class="group">
+          <div class="group__top">
+            <div class="group__name cube --largeInput">
+              <!-- <label for="name__input">Group Name</label> -->
+              <input
+                type="text"
+                id="name__input"
+                class="group__input"
+                placeholder="Group Name"
+              />
             </div>
+            <div class="group__number cube --smallInput">
+              <!-- <label id="label" for="hours__input">Time Worked</label> -->
+              <!-- <span class="hour--center">Time Worked</span> -->
+              <input
+                type="text"
+                id="number__input"
+                class="group__input"
+                placeholder="number"
+              />
+            </div>
+          </div>
 
-            <div class="group__right">
-              <div class="group__number cube">
-                <!-- <label for="number__input">number</label> -->
-                <input type="number" id="number__input" class="group__input" />
-              </div>
-              <div class="group__minutes cube">
-                <input
-                  type="text"
-                  id="minutes__input"
-                  class="group__input"
-                  placeholder="Minutes"
-                />
-              </div>
+          <div class="group__bottom">
+            <div class="group__hours cube --smallInput">
+              <!-- <label for="number__input">number</label> -->
+              <input
+                type="text"
+                id="hours__input"
+                class="group__input"
+                placeholder="hours"
+              />
             </div>
+            <div class="group__minutes cube --smallInput">
+              <input
+                type="text"
+                id="minutes__input"
+                class="group__input"
+                placeholder="Minutes"
+              />
+            </div>
+          </div>
 
-            <div class="submit">
-              <div class="horizontal-plus"></div>
-              <div class="vertical-plus"></div>
-            </div>
-          </section>
-        </div>
+          <div class="submit">
+            <div class="horizontal-plus"></div>
+            <div class="vertical-plus"></div>
+          </div>
+        </section>
+      </div>
+
+      <div class="container__right">
+        <!-- </div> -->
       </div>
     </div>
     <script src="app.js"></script>

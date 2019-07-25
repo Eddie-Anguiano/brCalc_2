@@ -6,7 +6,7 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   /* border: 1px solid red; */
 }
 
@@ -44,20 +44,26 @@ html {
 }
 
 .container--flex {
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.wrapper {
+  min-height: 100vh;
   max-width: 1920px;
   width: 85%;
   margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
+/* .wrapper {
+  max-width: 1920px;
+  width: 85%;
+  margin: 0 auto;
+  border: 1px solid red;
+  background-color: red;
+} */
+
 .cube {
-  padding: 1rem;
+  padding: 0.8rem;
 }
 
 label {
@@ -70,8 +76,19 @@ label {
 /*----------------------------------------------------*/
 
 .container__left {
-  width: 50%;
-  font-size: 1.8rem;
+  /* width: 48%; */
+  flex: 1 1 522px;
+  max-width: 645px;
+  font-size: 1.6rem;
+  /* border: 1px solid red; */
+}
+
+.container__right {
+  /* width: 48%; */
+  flex: 1 1 522px;
+  max-width: 645px;
+  /* border: 1px solid red; */
+  min-height: 80vh;
 }
 
 /*----------------------------------------------------*/
@@ -83,6 +100,7 @@ label {
   color: #4678bf;
   padding: 1rem;
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-around;
   font-size: 1.5rem;
 }
@@ -97,10 +115,7 @@ label {
   background-color: #4678bf;
 }
 
-.checkout__left,
-.checkout__right {
-  width: 100%;
-}
+/*   */
 
 .checkout__input {
   padding: 1rem;
@@ -124,18 +139,23 @@ label {
   border-radius: 1rem;
   padding: 2rem;
   margin-top: 2rem;
-  display: flex;
-  justify-content: center;
-  flex-direction: row;
+  /* display: flex;
+  flex-wrap: wrap;
+  justify-content: center; */
+  /* flex-direction: row; */
 }
 
-.group__left,
-.group__right {
-  width: 100%;
+.group__top,
+.group__bottom {
+  display: flex;
+  border: 1px solid red;
+  /* flex-wrap: wrap; */
+  justify-content: center;
+  /* width: 100%; */
 }
 
 .group__input {
-  width: 100%;
+  /* width: auto; */
   padding: 1.2rem;
   border-radius: 1rem;
   color: white;
@@ -143,17 +163,44 @@ label {
   box-shadow: -0.3rem 0.3rem 0.5rem black;
   border: none;
   font-size: 1.5rem;
+  width: 100%;
+  /* min-width: 50px;
+  max-width: 300px; */
+}
+
+.--smallInput {
+  max-width: 95px;
+}
+
+.--largeInput {
+  max-width: 170px;
+}
+
+.group__name {
+  flex-grow: 3;
+}
+
+.group__number {
+  flex-grow: 1;
 }
 
 .group__hours {
-  text-align: right;
+  flex: 1;
 }
 
-#number__input,
+.group__minutes {
+  flex: 1;
+}
+
+/* .group__hours {
+  text-align: right;
+} */
+
+/* #number__input,
 #hours__input,
 #minutes__input {
-  width: 50%;
-}
+  width: auto;
+} */
 
 .submit {
   height: 10rem;
