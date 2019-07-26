@@ -6,9 +6,9 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: "Roboto", sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-weight: 700;
-  letter-spacing: .2rem;
+  letter-spacing: 0.2rem;
   /* border: 1px solid red; */
 }
 
@@ -20,20 +20,21 @@ body {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#363949+0,363949+55,4678bf+100 */
   background: #363949;
   /* Old browsers */
-  background: -moz-linear-gradient(-45deg,
-      #363949 0%,
-      #363949 55%,
-      #4678bf 100%);
+  background: -moz-linear-gradient(
+    -45deg,
+    #363949 0%,
+    #363949 55%,
+    #4678bf 100%
+  );
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,
-      #363949 0%,
-      #363949 55%,
-      #4678bf 100%);
+  background: -webkit-linear-gradient(
+    -45deg,
+    #363949 0%,
+    #363949 55%,
+    #4678bf 100%
+  );
   /* Chrome10-25,Safari5.1-6 */
-  background: linear-gradient(135deg,
-      #363949 0%,
-      #363949 55%,
-      #4678bf 100%);
+  background: linear-gradient(135deg, #363949 0%, #363949 55%, #4678bf 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#363949', endColorstr='#4678bf', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
@@ -76,17 +77,18 @@ h1 {
 /*CONTAINERS*/
 /*----------------------------------------------------*/
 
-.container__left {
+.container__left,
+.container__right {
   flex: 1 1 522px;
   max-width: 645px;
   font-size: 1.6rem;
 }
-
+/* 
 .container__right {
   flex: 1 1 522px;
   max-width: 645px;
   min-height: 80vh;
-}
+} */
 
 /*----------------------------------------------------*/
 /*CHECKOUT*/
@@ -116,8 +118,6 @@ h1 {
   background-color: #4678bf;
 }
 
-/*   */
-
 .checkout__input {
   padding: 1rem;
   background-color: transparent;
@@ -142,14 +142,32 @@ h1 {
   margin-top: 2rem;
 }
 
-.group__header {
-  color: #346149;
+.group__header,
+.group__bottom h2 {
+  color: #4b4740;
+  /* text-decoration: underline; */
+  /* text-transform: uppercase; */
+  /* border: 1px solid red; */
+}
+
+.hours__header h2 {
+  /* border: 1px solid red; */
+  padding: 1.4rem 1.3rem 1.4rem 0;
+  font-family: 'Roboto Slab', serif;
 }
 
 .group__top,
 .group__bottom {
   display: flex;
-  border: 1px solid red;
+  /* border: 1px solid red; */
+  /* justify-content: center; */
+}
+
+.group__bottom {
+  flex-wrap: wrap;
+}
+
+.group__top {
   justify-content: center;
 }
 
@@ -165,14 +183,14 @@ h1 {
 }
 
 .--smallInput {
-  max-width: 110px;
+  max-width: 120px;
 }
 
 .--largeInput {
   max-width: 170px;
 }
 
-.group__name {
+/* .group__name {
   flex-grow: 3;
 }
 
@@ -186,7 +204,7 @@ h1 {
 
 .group__minutes {
   flex: 1;
-}
+} */
 
 .submit {
   height: 10rem;
