@@ -1,10 +1,19 @@
 /* eslint-disable no-restricted-syntax */
 /* eslint-disable no-console */
 
-function sum(a = 1, b = 3) {
-  return a + b;
-}
+const uiController = (function () {
 
-const temp = sum(2);
+  const DOMstrings = {
+    totalSalesInput: '.totalSales__input',
+    ccTipsInput: '.CcTips__input',
+    cashTipsInput: '.cashTips__input',
+    mdrTipsInput: '.MdrTips__input',
 
-console.log(temp);
+  };
+
+
+}());
+
+const dataController = (function () {}());
+
+const controller = (function (uiCtrl, dataCtrl) {}(uiController, dataController));
