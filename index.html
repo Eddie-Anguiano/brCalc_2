@@ -22,7 +22,7 @@
         <section class="checkout">
           <div class="checkout__left">
             <div class="checkout__totalSales cube">
-              <label for="">Total Sales</label>
+              <label for="totalSales__input">Total Sales</label>
               <div class="dollar">$</div>
               <input
                 type="text"
@@ -31,7 +31,7 @@
               />
             </div>
             <div class="checkout__totalCcTips cube">
-              <label for="">CC Tips</label>
+              <label for="CcTips__input">CC Tips</label>
               <div class="dollar">$</div>
               <input type="text" id="CcTips__input" class="checkout__input" />
             </div>
@@ -39,12 +39,12 @@
 
           <div class="checkout__right">
             <div class="checkout__totalCashTips cube">
-              <label for="">Cash Tips</label>
+              <label for="cashTips__input">Cash Tips</label>
               <div class="dollar">$</div>
               <input type="text" id="cashTips__input" class="checkout__input" />
             </div>
             <div class="checkout__MDRTips cube">
-              <label for="">MDR Tips</label>
+              <label for="MdrTips__input">MDR Tips</label>
               <div class="dollar">$</div>
               <input type="text" id="MdrTips__input" class="checkout__input" />
             </div>
@@ -72,10 +72,8 @@
             </div>
           </div>
 
+          <div class="group__sub-heading">Time Worked Per Server</div>
           <div class="group__bottom">
-            <div class="hours__header">
-              <h2>Hours Worked:</h2>
-            </div>
             <div class="group__hours cube --smallInput">
               <input
                 type="text"
@@ -94,7 +92,7 @@
             </div>
           </div>
 
-          <div class="submit">
+          <div class="submit" id="add_item">
             <div class="horizontal-plus"></div>
             <div class="vertical-plus"></div>
           </div>
