@@ -70,12 +70,12 @@ const dataController = (() => {
     }
 
     barTipOutPerHour() {
-      const barTipOutTotal = this.totalTips() * 0.5;
+      const barTipOutTotal = this.totalTips() * 0.05;
       return barTipOutTotal / totalHours;
     }
 
     expoTipOutPerHour() {
-      const expoTipOutTotal = this.totalTips() * 0.5;
+      const expoTipOutTotal = this.totalTips() * 0.05;
       return expoTipOutTotal / totalHours;
     }
   }
@@ -166,10 +166,10 @@ const controller = ((uiCtrl, dataCtrl) => {
   };
 })(uiController, dataController);
 
-controller.init();
-dataController.setTotals(1000, 100, 100, 0);
-dataController.setGroup("4o'clockers", 2, 2, 0);
+// controller.init();
+// dataController.setTotals(1000, 100, 100, 0);
+// dataController.setGroup("4o'clockers", 2, 2, 0);
 // dataController.setGroup("5o'clockers", 2, 5, 0);
 
-dataController.updateTotalHours();
-dataController.testControl();
+// dataController.updateTotalHours();
+// dataController.testControl();
