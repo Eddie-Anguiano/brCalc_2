@@ -97,40 +97,40 @@ const dataController = (() => {
       return this.decimalTimePerMember() * this.members;
     }
 
-    salesPerMember() {
+    get salesPerMember() {
       return this.decimalTimePerMember() * data.totals.salesPerHour();
     }
 
-    cashTipsPerMember() {
+    get cashTipsPerMember() {
       return this.decimalTimePerMember() * data.totals.cashTipsPerHour();
     }
 
-    ccTipsPerMember() {
+    get ccTipsPerMember() {
       return this.decimalTimePerMember() * data.totals.ccTipsPerHour();
     }
 
-    busTipOutPerMember() {
+    get busTipOutPerMember() {
       return data.totals.busTipOutPerHour() * this.decimalTimePerMember();
     }
 
-    barTipOutPerMember() {
+    get barTipOutPerMember() {
       return data.totals.barTipOutPerHour() * this.decimalTimePerMember();
     }
 
-    expoTipOutPerMember() {
+    get expoTipOutPerMember() {
       return data.totals.expoTipOutPerHour() * this.decimalTimePerMember();
     }
 
-    totalTipsPerMember() {
-      return this.ccTipsPerMember() + this.cashTipsPerMember();
+    get totalTipsPerMember() {
+      return this.ccTipsPerMember + this.cashTipsPerMember;
     }
 
-    totalTipOutPerMember() {
-      return this.busTipOutPerMember() + this.barTipOutPerMember() + this.expoTipOutPerMember();
+    get totalTipOutPerMember() {
+      return this.busTipOutPerMember + this.barTipOutPerMember + this.expoTipOutPerMember;
     }
 
-    claimedPerMember() {
-      return this.totalTipsPerMember() - this.totalTipOutPerMember();
+    get claimedPerMember() {
+      return this.totalTipsPerMember - this.totalTipOutPerMember;
     }
   }
 
@@ -150,6 +150,20 @@ const dataController = (() => {
       // console.log(data.totals.busTipOutPerMember());
       console.log(data);
     },
+    getGroups() {
+      return data.groups.map(item => ({
+        name: item.name,
+        hoursPer: item.decimalTimePerMember(),
+        salesPer: item.salesPerMember,
+        cctipsPer: item.ccTipsPerMember,
+        cashPer: item.cashTipsPerMember,
+        claimedPer: item.claimedPerMember,
+        busTipPer: item.busTipOutPerMember,
+        barTipPer: item.barTipOutPerMember,
+        expoTipPer: item.expoTipOutPerMember,
+        totalTipOUtPer: item.totalTipOutPerMember,
+      }));
+    },
   };
 })();
 
@@ -166,7 +180,6 @@ const controller = ((uiCtrl, dataCtrl) => {
         allValues.hoursValue,
         allValues.minutesValue,
       );
-      console.log('hello');
       // calculate
       // display group block(s)
     });
@@ -181,9 +194,9 @@ const controller = ((uiCtrl, dataCtrl) => {
 })(uiController, dataController);
 
 controller.init();
-dataController.setTotals(1000, 200, 200, 100);
-dataController.setGroup('eddie', 1, 5, 0);
-dataController.setGroup('monica', 1, 4, 0);
+// dataController.setTotals(1000, 200, 200, 100);
+// dataController.setGroup('eddie', 1, 5, 0);
+// dataController.setGroup('monica', 1, 4, 0);
 
-dataController.updateTotalHours();
-dataController.testControl();
+// dataController.updateTotalHours();
+// console.log(dataController.getGroups());

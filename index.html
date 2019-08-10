@@ -1,106 +1,80 @@
 <!DOCTYPE html>
 <html lang="">
-  <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title></title>
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="style.css" />
-  </head>
 
-  <body>
-    <div class="container--flex">
-      <div class="container__left">
-        <h1 class="checkout__header">Checkout</h1>
-        <section class="checkout">
-          <div class="checkout__left">
-            <div class="checkout__totalSales cube">
-              <label for="totalSales__input">Total Sales</label>
-              <div class="dollar">$</div>
-              <input
-                type="text"
-                id="totalSales__input"
-                class="checkout__input"
-              />
-            </div>
-            <div class="checkout__totalCcTips cube">
-              <label for="CcTips__input">CC Tips</label>
-              <div class="dollar">$</div>
-              <input type="text" id="CcTips__input" class="checkout__input" />
-            </div>
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title></title>
+  <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Slab&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="container--flex">
+    <div class="container__left">
+      <h1 class="checkout__header">Checkout</h1>
+      <section class="checkout">
+        <div class="checkout__left">
+          <div class="checkout__totalSales cube">
+            <label for="totalSales__input">Total Sales</label>
+            <div class="dollar">$</div>
+            <input type="text" id="totalSales__input" class="checkout__input" />
           </div>
-
-          <div class="checkout__right">
-            <div class="checkout__totalCashTips cube">
-              <label for="cashTips__input">Cash Tips</label>
-              <div class="dollar">$</div>
-              <input type="text" id="cashTips__input" class="checkout__input" />
-            </div>
-            <div class="checkout__MDRTips cube">
-              <label for="MdrTips__input">MDR Tips</label>
-              <div class="dollar">$</div>
-              <input type="text" id="MdrTips__input" class="checkout__input" />
-            </div>
+          <div class="checkout__totalCcTips cube">
+            <label for="CcTips__input">CC Tips</label>
+            <div class="dollar">$</div>
+            <input type="text" id="CcTips__input" class="checkout__input" />
           </div>
-        </section>
+        </div>
 
-        <section class="group">
-          <h1 class="group__header">Add Group</h1>
-          <div class="group__top">
-            <div class="group__name cube --largeInput">
-              <input
-                type="text"
-                id="name__input"
-                class="group__input"
-                placeholder="Group Name"
-              />
-            </div>
-            <div class="group__number cube --smallInput">
-              <input
-                type="text"
-                id="number__input"
-                class="group__input"
-                placeholder="#servers"
-              />
-            </div>
+        <div class="checkout__right">
+          <div class="checkout__totalCashTips cube">
+            <label for="cashTips__input">Cash Tips</label>
+            <div class="dollar">$</div>
+            <input type="text" id="cashTips__input" class="checkout__input" />
           </div>
-
-          <div class="group__sub-heading">Time Worked Per Server</div>
-          <div class="group__bottom">
-            <div class="group__hours cube --smallInput">
-              <input
-                type="text"
-                id="hours__input"
-                class="group__input"
-                placeholder="hours"
-              />
-            </div>
-            <div class="group__minutes cube --smallInput">
-              <input
-                type="text"
-                id="minutes__input"
-                class="group__input"
-                placeholder="Minutes"
-              />
-            </div>
+          <div class="checkout__MDRTips cube">
+            <label for="MdrTips__input">MDR Tips</label>
+            <div class="dollar">$</div>
+            <input type="text" id="MdrTips__input" class="checkout__input" />
           </div>
+        </div>
+      </section>
 
-          <div class="submit" id="add_item">
-            <div class="horizontal-plus"></div>
-            <div class="vertical-plus"></div>
+      <section class="group">
+        <h1 class="group__header">Add Group</h1>
+        <div class="group__top">
+          <div class="group__name cube --largeInput">
+            <input type="text" id="name__input" class="group__input" placeholder="Group Name" />
           </div>
-        </section>
-      </div>
+          <div class="group__number cube --smallInput">
+            <input type="text" id="number__input" class="group__input" placeholder="#servers" />
+          </div>
+        </div>
 
-      <div class="container__right"></div>
+        <div class="group__sub-heading">Time Worked Per Server</div>
+        <div class="group__bottom">
+          <div class="group__hours cube --smallInput">
+            <input type="text" id="hours__input" class="group__input" placeholder="hours" />
+          </div>
+          <div class="group__minutes cube --smallInput">
+            <input type="text" id="minutes__input" class="group__input" placeholder="Minutes" />
+          </div>
+        </div>
+
+        <div class="submit" id="add_item">
+          <div class="horizontal-plus"></div>
+          <div class="vertical-plus"></div>
+        </div>
+      </section>
     </div>
-    <script src="app.js"></script>
-  </body>
+
+    <div class="container__right">
+      hello
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+
 </html>
