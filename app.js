@@ -98,15 +98,15 @@ const dataController = (() => {
     }
 
     salesPerMember() {
-      return this.decimalTimePerMember() * Total.salesPerHour();
+      return this.decimalTimePerMember() * data.totals.salesPerHour();
     }
 
     cashTipsPerMember() {
-      return this.decimalTimePerMember() * Total.cashTipsPerHour();
+      return this.decimalTimePerMember() * data.totals.cashTipsPerHour();
     }
 
     ccTipsPerMember() {
-      return this.decimalTimePerMember() * Total.ccTipsPerHour();
+      return this.decimalTimePerMember() * data.totals.ccTipsPerHour();
     }
 
     busTipOutPerMember() {
@@ -121,8 +121,16 @@ const dataController = (() => {
       return data.totals.expoTipOutPerHour() * this.decimalTimePerMember();
     }
 
+    totalTipsPerMember() {
+      return this.ccTipsPerMember() + this.cashTipsPerMember();
+    }
+
     totalTipOutPerMember() {
       return this.busTipOutPerMember() + this.barTipOutPerMember() + this.expoTipOutPerMember();
+    }
+
+    claimedPerMember() {
+      return this.totalTipsPerMember() - this.totalTipOutPerMember();
     }
   }
 
@@ -140,7 +148,7 @@ const dataController = (() => {
     },
     testControl() {
       // console.log(data.totals.busTipOutPerMember());
-      console.log(data.groups[0].barTipOutPerMember());
+      console.log(data);
     },
   };
 })();
@@ -151,8 +159,14 @@ const controller = ((uiCtrl, dataCtrl) => {
     document.querySelector(DOM.addItem).addEventListener('click', () => {
       // get all inputs
       const allValues = uiCtrl.getInputs();
-      console.log(allValues);
       // create data structure
+      dataCtrl.setGroup(
+        allValues.nameValue,
+        allValues.numberValue,
+        allValues.hoursValue,
+        allValues.minutesValue,
+      );
+      console.log('hello');
       // calculate
       // display group block(s)
     });
@@ -166,10 +180,10 @@ const controller = ((uiCtrl, dataCtrl) => {
   };
 })(uiController, dataController);
 
-// controller.init();
-// dataController.setTotals(1000, 100, 100, 0);
-// dataController.setGroup("4o'clockers", 2, 2, 0);
-// dataController.setGroup("5o'clockers", 2, 5, 0);
+controller.init();
+dataController.setTotals(1000, 200, 200, 100);
+dataController.setGroup('eddie', 1, 5, 0);
+dataController.setGroup('monica', 1, 4, 0);
 
-// dataController.updateTotalHours();
-// dataController.testControl();
+dataController.updateTotalHours();
+dataController.testControl();
