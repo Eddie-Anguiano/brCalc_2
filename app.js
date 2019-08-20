@@ -30,6 +30,7 @@ const uiController = (() => {
         minutesValue: parseFloat(document.querySelector(DOMstrings.minutesInput).value),
       };
     },
+    displayGroups(groups) {},
   };
 })();
 
@@ -147,8 +148,8 @@ const dataController = (() => {
       data.totals = totalsObj;
     },
     testControl() {
-      // console.log(data.totals.busTipOutPerMember());
-      console.log(data);
+      console.log(data.totals.busTipOutPerMember);
+      // console.log(this.getGroups());
     },
     getGroups() {
       return data.groups.map(item => ({
@@ -174,13 +175,19 @@ const controller = ((uiCtrl, dataCtrl) => {
       // get all inputs
       const allValues = uiCtrl.getInputs();
       // create data structure
+      dataCtrl.setTotals(
+        allValues.totalSalesValue,
+        allValues.cashTipsValue,
+        allValues.ccTipsValue,
+        allValues.mdrTipsValue,
+      );
       dataCtrl.setGroup(
         allValues.nameValue,
         allValues.numberValue,
         allValues.hoursValue,
         allValues.minutesValue,
       );
-      // calculate
+      dataCtrl.updateTotalHours();
       // display group block(s)
     });
   }
