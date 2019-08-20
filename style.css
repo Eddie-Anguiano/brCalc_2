@@ -6,9 +6,10 @@
   box-sizing: border-box;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
+  font-family: "Roboto", sans-serif;
   font-weight: 700;
   letter-spacing: 0.2rem;
+  border: none;
   /* border: 1px solid red; */
 }
 
@@ -20,15 +21,19 @@ body {
   /* Permalink - use to edit and share this gradient: https://colorzilla.com/gradient-editor/#363949+0,363949+55,4678bf+100 */
   background: #363949;
   /* Old browsers */
-  background: -moz-linear-gradient(-45deg,
-      #363949 0%,
-      #363949 55%,
-      #4678bf 100%);
+  background: -moz-linear-gradient(
+    -45deg,
+    #363949 0%,
+    #363949 55%,
+    #4678bf 100%
+  );
   /* FF3.6-15 */
-  background: -webkit-linear-gradient(-45deg,
-      #363949 0%,
-      #363949 55%,
-      #4678bf 100%);
+  background: -webkit-linear-gradient(
+    -45deg,
+    #363949 0%,
+    #363949 55%,
+    #4678bf 100%
+  );
   /* Chrome10-25,Safari5.1-6 */
   background: linear-gradient(135deg, #363949 0%, #363949 55%, #4678bf 100%);
   /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
@@ -58,14 +63,25 @@ html {
   padding: 0.8rem;
 }
 
-
 h1 {
   text-align: center;
   margin-bottom: 2rem;
   font-size: 3rem;
   color: white;
-  font-family: 'Roboto Slab', serif;
-  text-shadow: -2px 2px 2px black;
+  font-family: "Roboto Slab", serif;
+  text-shadow: -0.2rem 0.2rem 0.2rem black;
+}
+
+.material-icons {
+  padding-bottom: 0.5rem;
+}
+
+.--smallInput {
+  max-width: 9rem;
+}
+
+.--largeInput {
+  max-width: 13rem;
 }
 
 /*----------------------------------------------------*/
@@ -74,8 +90,8 @@ h1 {
 
 .container__left,
 .container__right {
-  flex: 1 1 522px;
-  max-width: 645px;
+  flex: 1 1 52.2rem;
+  max-width: 64.5rem;
   font-size: 1.6rem;
   margin-top: 8rem;
 }
@@ -109,7 +125,7 @@ h1 {
 
 .checkout__right,
 .checkout__left {
-  max-width: 230px;
+  max-width: 23rem;
 }
 
 .checkout__header {
@@ -121,7 +137,7 @@ h1 {
   display: inline-block;
   padding: 1rem;
   border-radius: 0.7rem 0 0 0.7rem;
-  border: 1px solid #4678bf;
+  border: 0.1rem solid #4678bf;
   color: white;
   background-color: #4678bf;
 }
@@ -130,7 +146,7 @@ h1 {
   width: 80%;
   padding: 1rem;
   background-color: transparent;
-  border-bottom: 1px solid #4678bf;
+  border-bottom: 0.1rem solid #4678bf;
   border-top: none;
   border-right: none;
   border-left: none;
@@ -152,54 +168,71 @@ h1 {
   text-align: left;
 }
 
-.group input {
-  background-color: transparent;
-}
-
-/* .group__header,
-.group__bottom h2 {
-  color: white;
-}
-
-.hours__header h2 {
-  padding: 1.4rem 1.3rem 1.4rem 0;
-  font-family: 'Roboto Slab', serif;
-}
-
 .group__top,
 .group__bottom {
   display: flex;
-  justify-content: center;
+  /* justify-content: space-between; */
+  align-items: flex-end;
+  margin: 2rem 1rem;
 }
 
-.group__bottom {
-  flex-wrap: wrap;
+/*------------------input style-------------------*/
+
+.form {
+  height: 5rem;
+  position: relative;
+  overflow: hidden;
+  margin: 0 1rem;
 }
 
-.group__input {
-  padding: 1.2rem;
-  border-radius: 1rem;
-  color: white;
-  background-color: #87947a;
-  box-shadow: -0.3rem 0.3rem 0.5rem black;
-  border: none;
-  font-size: 1.5rem;
+.group input {
+  background-color: transparent;
+  height: 100%;
   width: 100%;
+  padding-top: 2rem;
 }
 
-.--smallInput {
-  max-width: 120px;
+.label-name {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  left: 0%;
+  bottom: 0px;
+  pointer-events: none;
+  border-bottom: 2px solid rgba(0, 0, 0, 0.3);
 }
 
-.--largeInput {
-  max-width: 170px;
+.label-name::after {
+  content: "";
+  position: absolute;
+  bottom: -2px;
+  left: 0%;
+  height: 100%;
+  width: 100%;
+  border-bottom: 2px solid #4678bf;
+  transform: translateX(-100%);
+  transition: all 0.3s ease;
 }
 
-.group__sub-heading {
-  text-align: center;
-  color: white;
-  text-shadow: -1px 1px 1px black;
-} */
+.content-name {
+  position: absolute;
+  color: rgba(0, 0, 0, 0.3);
+  bottom: 0.5rem;
+  left: 1rem;
+  transition: all 0.3s ease;
+}
+
+.group input:focus + .label-name .content-name,
+.group input:valid + .label-name .content-name {
+  transform: translateY(-160%);
+  font-size: 1.1rem;
+  color: #4678bf;
+}
+
+.group input:focus + .label-name::after,
+.group input:valid + .label-name::after {
+  transform: translateX(0%);
+}
 
 .submit {
   height: 10rem;
@@ -210,7 +243,8 @@ h1 {
   transform: translate(-50%, -50%);
   border-radius: 10rem;
   background-color: #519872;
-  box-shadow: -0.5rem 0.5rem 1.5rem black;
+  box-shadow: -0.5rem 0.5rem 1.5rem #292625;
+  transition: all 0.2s ease;
 }
 
 .submit:active {
@@ -248,10 +282,10 @@ table {
   border-collapse: separate;
   border-spacing: 0.5rem;
   padding: 1rem;
-  margin-bottom: 5rem;
-  /* margin-left: 5rem; */
+  margin-bottom: 1rem;
   border-radius: 1rem;
   color: white;
+  box-shadow: -0.5rem 0.5rem 1.5rem #292625;
 }
 
 th {

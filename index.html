@@ -57,18 +57,57 @@
 
         <section class="group">
           <h1 class="group__header">Add Group</h1>
-          <div>
-            <!-- <i class="material-icons">group</i> -->
-            <div class="form">
-              <input type="text" id="name__input" class="group__input" />
-              <label>name</label>
+          <div class="group__top">
+            <i class="material-icons">group</i>
+            <div class="form --largeInput">
+              <input
+                type="text"
+                id="name__input"
+                class="group__input"
+                required
+              />
+              <label class="label-name"
+                ><span class="content-name">name</span></label
+              >
             </div>
-            <input type="text" id="number__input" class="group__input" />
+            <div class="form  --smallInput">
+              <input
+                type="text"
+                id="number__input"
+                class="group__input"
+                required
+              />
+              <label class="label-name"
+                ><span class="content-name">number</span></label
+              >
+            </div>
           </div>
-          <div>
+
+          <div class="group__bottom">
             <i class="material-icons">access_time</i>
-            <input type="text" id="hours__input" class="group__input" />
-            <input type="text" id="minutes__input" class="group__input" />
+            <div class="form --smallInput">
+              <input
+                type="text"
+                id="hours__input"
+                class="group__input"
+                required
+              />
+              <label class="label-name"
+                ><span class="content-name">hours</span></label
+              >
+            </div>
+            <span>:</span>
+            <div class="form --smallInput">
+              <input
+                type="text"
+                id="minutes__input"
+                class="group__input"
+                required
+              />
+              <label class="label-name"
+                ><span class="content-name">minutes</span></label
+              >
+            </div>
           </div>
           <!-- <div class="group__top">
             <div class="group__name cube --largeInput">
