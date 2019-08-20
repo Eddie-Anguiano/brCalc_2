@@ -30,7 +30,35 @@ const uiController = (() => {
         minutesValue: parseFloat(document.querySelector(DOMstrings.minutesInput).value),
       };
     },
-    displayGroups(groups) {},
+    displayGroups(groups) {
+      groups.forEach((item) => {
+        const html = `<table class="table">
+          <thead>
+            <tr>
+              <th colspan="2">${item.name} ${item.hoursPer}hrs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>${item.salesPer}</td>
+              <td>bus tips</td>
+            </tr>
+            <tr>
+              <td>cc tips</td>
+              <td>bar tips</td>
+            </tr>
+            <tr>
+              <td>cash tips</td>
+              <td>bar tips</td>
+            </tr>
+            <tr>
+              <td>claimed</td>
+              <td>total tipout</td>
+            </tr>
+          </tbody>
+        </table>`;
+      });
+    },
   };
 })();
 
