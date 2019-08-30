@@ -248,6 +248,10 @@ h1 {
   transition: all 0.2s ease;
 }
 
+.submit:hover {
+  cursor: pointer;
+}
+
 .submit:active {
   box-shadow: none;
   transform: translate(-55%, -50%);
@@ -277,6 +281,10 @@ h1 {
 /*OUTPUT TABLE*/
 /*----------------------------------------------------*/
 
+.table__container {
+  position: relative;
+}
+
 table {
   width: 100%;
   background-color: #519872;
@@ -299,4 +307,15 @@ td {
   padding: 1rem;
   background-color: #437d5e;
   border-radius: 0.2rem;
+}
+
+.table__delete {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  color: #bf1a2f;
+}
+
+.table__delete:hover {
+  cursor: pointer;
 }

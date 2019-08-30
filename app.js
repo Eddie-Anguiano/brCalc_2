@@ -14,6 +14,9 @@ const uiController = (() => {
     addItem: '#add_item',
     output: '.output',
     checkoutContainer: '.checkout',
+    tableDelete: '.table__delete',
+    tableContainer: '.table__container',
+    outputContainer: '.output',
   };
 
   return {
@@ -42,33 +45,38 @@ const uiController = (() => {
     },
     displayGroups(groups) {
       groups.forEach((item) => {
-        const html = `<table class="table">
-          <thead>
-            <tr>
-              <th colspan="2">${item.name} ${(Math.floor(100 * item.hoursPer) / 100).toFixed(
+        const html = `<div class='table__container'>
+          <i class="material-icons table__delete"  id='${item.name}'>delete</i>
+          <table class="table">
+            <thead>
+              <tr>
+                <th colspan="2">${item.name} ${(Math.floor(100 * item.hoursPer) / 100).toFixed(
     2,
   )}hrs</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Sales:  $${(Math.floor(100 * item.salesPer) / 100).toFixed(2)}</td>
-              <td>Busser Tips:  $${(Math.floor(10 * item.busTipPer) / 10).toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>CC Tips:  $${(Math.floor(100 * item.cctipsPer) / 100).toFixed(2)}</td>
-              <td>Bar Tips:  $${(Math.floor(10 * item.barTipPer) / 10).toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>Cash Tips:  $${(Math.floor(100 * item.cashPer) / 100).toFixed(2)}</td>
-              <td>Bar Tips:  $${(Math.floor(100 * item.barTipPer) / 100).toFixed(2)}</td>
-            </tr>
-            <tr>
-              <td>Claimed Tips:  $${(Math.floor(100 * item.claimedPer) / 100).toFixed(2)}</td>
-              <td>Total Tip Out:  $${(Math.floor(100 * item.totalTipOUtPer) / 100).toFixed(2)}</td>
-            </tr>
-          </tbody>
-        </table>`;
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Sales:  $${(Math.floor(100 * item.salesPer) / 100).toFixed(2)}</td>
+                <td>Busser Tips:  $${(Math.floor(10 * item.busTipPer) / 10).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>CC Tips:  $${(Math.floor(100 * item.cctipsPer) / 100).toFixed(2)}</td>
+                <td>Bar Tips:  $${(Math.floor(10 * item.barTipPer) / 10).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>Cash Tips:  $${(Math.floor(100 * item.cashPer) / 100).toFixed(2)}</td>
+                <td>Bar Tips:  $${(Math.floor(100 * item.barTipPer) / 100).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>Claimed Tips:  $${(Math.floor(100 * item.claimedPer) / 100).toFixed(2)}</td>
+                <td>Total Tip Out:  $${(Math.floor(100 * item.totalTipOUtPer) / 100).toFixed(
+    2,
+  )}</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>`;
 
         document.querySelector(DOMstrings.output).insertAdjacentHTML('beforeend', html);
       });
@@ -81,6 +89,10 @@ const uiController = (() => {
       document.querySelector(DOMstrings.cashTipsInput).disabled = true;
       document.querySelector(DOMstrings.ccTipsInput).disabled = true;
       document.querySelector(DOMstrings.mdrTipsInput).disabled = true;
+    },
+    hideGroup(element) {
+      const deletebutton = element;
+      deletebutton.parentNode.style.display = 'none';
     },
   };
 })();
@@ -257,6 +269,13 @@ const controller = ((uiCtrl, dataCtrl) => {
         const num = parseFloat(inputObj.value.replace(/,/g, ''));
         const commaNum = num.toLocaleString();
         inputObj.value = commaNum;
+      }
+    });
+
+    document.querySelector(DOM.outputContainer).addEventListener('click', (ev) => {
+      const element = ev.target;
+      if (element.classList.contains('table__delete') === true) {
+        uiCtrl.hideGroup(element);
       }
     });
   }
