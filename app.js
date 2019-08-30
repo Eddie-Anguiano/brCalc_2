@@ -12,6 +12,8 @@ const uiController = (() => {
     hoursInput: '#hours__input',
     minutesInput: '#minutes__input',
     addItem: '#add_item',
+    output: '.output',
+    checkoutContainer: '.checkout',
   };
 
   return {
@@ -20,10 +22,18 @@ const uiController = (() => {
     },
     getInputs() {
       return {
-        totalSalesValue: parseFloat(document.querySelector(DOMstrings.totalSalesInput).value),
-        ccTipsValue: parseFloat(document.querySelector(DOMstrings.ccTipsInput).value),
-        cashTipsValue: parseFloat(document.querySelector(DOMstrings.cashTipsInput).value),
-        mdrTipsValue: parseFloat(document.querySelector(DOMstrings.mdrTipsInput).value),
+        totalSalesValue: parseFloat(
+          document.querySelector(DOMstrings.totalSalesInput).value.replace(/,/g, ''),
+        ),
+        ccTipsValue: parseFloat(
+          document.querySelector(DOMstrings.ccTipsInput).value.replace(/,/g, ''),
+        ),
+        cashTipsValue: parseFloat(
+          document.querySelector(DOMstrings.cashTipsInput).value.replace(/,/g, ''),
+        ),
+        mdrTipsValue: parseFloat(
+          document.querySelector(DOMstrings.mdrTipsInput).value.replace(/,/g, ''),
+        ),
         nameValue: document.querySelector(DOMstrings.nameInput).value,
         numberValue: parseFloat(document.querySelector(DOMstrings.numberInput).value),
         hoursValue: parseFloat(document.querySelector(DOMstrings.hoursInput).value),
@@ -35,29 +45,42 @@ const uiController = (() => {
         const html = `<table class="table">
           <thead>
             <tr>
-              <th colspan="2">${item.name} ${item.hoursPer}hrs</th>
+              <th colspan="2">${item.name} ${(Math.floor(100 * item.hoursPer) / 100).toFixed(
+    2,
+  )}hrs</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>${item.salesPer}</td>
-              <td>bus tips</td>
+              <td>Sales:  $${(Math.floor(100 * item.salesPer) / 100).toFixed(2)}</td>
+              <td>Busser Tips:  $${(Math.floor(10 * item.busTipPer) / 10).toFixed(2)}</td>
             </tr>
             <tr>
-              <td>cc tips</td>
-              <td>bar tips</td>
+              <td>CC Tips:  $${(Math.floor(100 * item.cctipsPer) / 100).toFixed(2)}</td>
+              <td>Bar Tips:  $${(Math.floor(10 * item.barTipPer) / 10).toFixed(2)}</td>
             </tr>
             <tr>
-              <td>cash tips</td>
-              <td>bar tips</td>
+              <td>Cash Tips:  $${(Math.floor(100 * item.cashPer) / 100).toFixed(2)}</td>
+              <td>Bar Tips:  $${(Math.floor(100 * item.barTipPer) / 100).toFixed(2)}</td>
             </tr>
             <tr>
-              <td>claimed</td>
-              <td>total tipout</td>
+              <td>Claimed Tips:  $${(Math.floor(100 * item.claimedPer) / 100).toFixed(2)}</td>
+              <td>Total Tip Out:  $${(Math.floor(100 * item.totalTipOUtPer) / 100).toFixed(2)}</td>
             </tr>
           </tbody>
         </table>`;
+
+        document.querySelector(DOMstrings.output).insertAdjacentHTML('beforeend', html);
       });
+    },
+    clearOutput() {
+      document.querySelector(DOMstrings.output).innerHTML = '';
+    },
+    disableCheckoutInputs() {
+      document.querySelector(DOMstrings.totalSalesInput).disabled = true;
+      document.querySelector(DOMstrings.cashTipsInput).disabled = true;
+      document.querySelector(DOMstrings.ccTipsInput).disabled = true;
+      document.querySelector(DOMstrings.mdrTipsInput).disabled = true;
     },
   };
 })();
@@ -90,7 +113,7 @@ const dataController = (() => {
     }
 
     ccTipsPerHour() {
-      return this.cashTips / totalHours;
+      return this.ccTips / totalHours;
     }
 
     busTipOutPerHour() {
@@ -200,6 +223,7 @@ const controller = ((uiCtrl, dataCtrl) => {
   function setUpEventListeners() {
     const DOM = uiCtrl.getDOMstrings();
     document.querySelector(DOM.addItem).addEventListener('click', () => {
+      uiCtrl.clearOutput();
       // get all inputs
       const allValues = uiCtrl.getInputs();
       // create data structure
@@ -217,6 +241,23 @@ const controller = ((uiCtrl, dataCtrl) => {
       );
       dataCtrl.updateTotalHours();
       // display group block(s)
+      const groups = dataCtrl.getGroups();
+      uiCtrl.displayGroups(groups);
+      uiCtrl.disableCheckoutInputs();
+    });
+
+    document.querySelector(DOM.checkoutContainer).addEventListener('keyup', (ev) => {
+      const inputObj = ev.target;
+
+      if (
+        inputObj.tagName === 'INPUT'
+        && inputObj.value.includes('.') !== true
+        && inputObj.value !== ''
+      ) {
+        const num = parseFloat(inputObj.value.replace(/,/g, ''));
+        const commaNum = num.toLocaleString();
+        inputObj.value = commaNum;
+      }
     });
   }
 
@@ -229,9 +270,3 @@ const controller = ((uiCtrl, dataCtrl) => {
 })(uiController, dataController);
 
 controller.init();
-// dataController.setTotals(1000, 200, 200, 100);
-// dataController.setGroup('eddie', 1, 5, 0);
-// dataController.setGroup('monica', 1, 4, 0);
-
-// dataController.updateTotalHours();
-// console.log(dataController.getGroups());
