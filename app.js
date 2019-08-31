@@ -16,7 +16,6 @@ const uiController = (() => {
     checkoutContainer: '.checkout',
     tableDelete: '.table__delete',
     tableContainer: '.table__container',
-    outputContainer: '.output',
   };
 
   return {
@@ -211,7 +210,7 @@ const dataController = (() => {
       data.totals = totalsObj;
     },
     testControl() {
-      console.log(data.totals.busTipOutPerMember);
+      console.log(data);
       // console.log(this.getGroups());
     },
     getGroups() {
@@ -228,13 +227,19 @@ const dataController = (() => {
         totalTipOUtPer: item.totalTipOutPerMember,
       }));
     },
+    removeGroup(elementId) {
+      const updatedGroups = data.groups.filter(item => item.name !== elementId);
+      console.log(updatedGroups);
+      data.groups = updatedGroups;
+    },
   };
 })();
 
 const controller = ((uiCtrl, dataCtrl) => {
   function setUpEventListeners() {
     const DOM = uiCtrl.getDOMstrings();
-    document.querySelector(DOM.addItem).addEventListener('click', () => {
+
+    function submit() {
       uiCtrl.clearOutput();
       // get all inputs
       const allValues = uiCtrl.getInputs();
@@ -256,6 +261,10 @@ const controller = ((uiCtrl, dataCtrl) => {
       const groups = dataCtrl.getGroups();
       uiCtrl.displayGroups(groups);
       uiCtrl.disableCheckoutInputs();
+    }
+
+    document.querySelector(DOM.addItem).addEventListener('click', () => {
+      submit();
     });
 
     document.querySelector(DOM.checkoutContainer).addEventListener('keyup', (ev) => {
@@ -272,11 +281,16 @@ const controller = ((uiCtrl, dataCtrl) => {
       }
     });
 
-    document.querySelector(DOM.outputContainer).addEventListener('click', (ev) => {
-      const element = ev.target;
-      if (element.classList.contains('table__delete') === true) {
-        uiCtrl.hideGroup(element);
-      }
+    document.querySelector(DOM.output).addEventListener('click', (ev) => {
+      const elementId = ev.target.id;
+      // if (element.classList.contains('table__delete') === true) {
+      //   uiCtrl.hideGroup(element);
+      // }
+      dataCtrl.removeGroup(elementId);
+      uiCtrl.clearOutput();
+      dataCtrl.updateTotalHours();
+      const groups = dataCtrl.getGroups();
+      uiCtrl.displayGroups(groups);
     });
   }
 
