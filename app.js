@@ -49,9 +49,13 @@ const uiController = (() => {
           <table class="table">
             <thead>
               <tr>
-                <th colspan="2">${item.name} ${(Math.floor(100 * item.hoursPer) / 100).toFixed(
+                <th colspan="2"><span class="table__group-name">${item.name}:</span> ${(
+    Math.floor(100 * item.hoursPer) / 100
+  ).toFixed(
     2,
-  )}hrs</th>
+        )}hrs &nbsp;&nbsp;&nbsp;&nbsp;<span class="table__group-name"><i class="material-icons --test">person</i></span> ${
+    item.numMembers
+  }</th>
               </tr>
             </thead>
             <tbody>
@@ -92,6 +96,12 @@ const uiController = (() => {
     hideGroup(element) {
       const deletebutton = element;
       deletebutton.parentNode.style.display = 'none';
+    },
+    clearGroupsInput() {
+      document.querySelector(DOMstrings.nameInput).value = '';
+      document.querySelector(DOMstrings.numberInput).value = '';
+      document.querySelector(DOMstrings.hoursInput).value = '';
+      document.querySelector(DOMstrings.minutesInput).value = '';
     },
   };
 })();
@@ -225,6 +235,7 @@ const dataController = (() => {
         barTipPer: item.barTipOutPerMember,
         expoTipPer: item.expoTipOutPerMember,
         totalTipOUtPer: item.totalTipOutPerMember,
+        numMembers: item.members,
       }));
     },
     removeGroup(elementId) {
@@ -261,6 +272,7 @@ const controller = ((uiCtrl, dataCtrl) => {
       const groups = dataCtrl.getGroups();
       uiCtrl.displayGroups(groups);
       uiCtrl.disableCheckoutInputs();
+      uiCtrl.clearGroupsInput();
     }
 
     document.querySelector(DOM.addItem).addEventListener('click', () => {
