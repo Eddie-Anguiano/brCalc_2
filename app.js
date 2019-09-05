@@ -23,6 +23,15 @@ const uiController = (() => {
       return DOMstrings;
     },
     getInputs() {
+      let validCashTips = document.querySelector(DOMstrings.cashTipsInput).value;
+      let validMdrTips = document.querySelector(DOMstrings.mdrTipsInput).value;
+
+      if (validCashTips === '') {
+        validCashTips = '0';
+      }
+      if (validMdrTips === '') {
+        validMdrTips = '0';
+      }
       return {
         totalSalesValue: parseFloat(
           document.querySelector(DOMstrings.totalSalesInput).value.replace(/,/g, ''),
@@ -30,12 +39,8 @@ const uiController = (() => {
         ccTipsValue: parseFloat(
           document.querySelector(DOMstrings.ccTipsInput).value.replace(/,/g, ''),
         ),
-        cashTipsValue: parseFloat(
-          document.querySelector(DOMstrings.cashTipsInput).value.replace(/,/g, ''),
-        ),
-        mdrTipsValue: parseFloat(
-          document.querySelector(DOMstrings.mdrTipsInput).value.replace(/,/g, ''),
-        ),
+        cashTipsValue: parseFloat(validCashTips.replace(/,/g, '')),
+        mdrTipsValue: parseFloat(validMdrTips.replace(/,/g, '')),
         nameValue: document.querySelector(DOMstrings.nameInput).value,
         numberValue: parseFloat(document.querySelector(DOMstrings.numberInput).value),
         hoursValue: parseFloat(document.querySelector(DOMstrings.hoursInput).value),
@@ -53,7 +58,7 @@ const uiController = (() => {
     Math.floor(100 * item.hoursPer) / 100
   ).toFixed(
     2,
-        )}hrs &nbsp;&nbsp;&nbsp;&nbsp;<span class="table__group-name"><i class="material-icons --test">person</i></span> ${
+  )}hrs &nbsp;&nbsp;&nbsp;&nbsp;<span class="table__group-name"><i class="material-icons --test">person</i></span> ${
     item.numMembers
   }</th>
               </tr>
@@ -219,10 +224,6 @@ const dataController = (() => {
       const totalsObj = new Total(sales, cashTips, ccTips, mdrTips);
       data.totals = totalsObj;
     },
-    testControl() {
-      console.log(data);
-      // console.log(this.getGroups());
-    },
     getGroups() {
       return data.groups.map(item => ({
         name: item.name,
@@ -240,7 +241,6 @@ const dataController = (() => {
     },
     removeGroup(elementId) {
       const updatedGroups = data.groups.filter(item => item.name !== elementId);
-      console.log(updatedGroups);
       data.groups = updatedGroups;
     },
   };
@@ -294,21 +294,19 @@ const controller = ((uiCtrl, dataCtrl) => {
     });
 
     document.querySelector(DOM.output).addEventListener('click', (ev) => {
-      const elementId = ev.target.id;
-      // if (element.classList.contains('table__delete') === true) {
-      //   uiCtrl.hideGroup(element);
-      // }
-      dataCtrl.removeGroup(elementId);
-      uiCtrl.clearOutput();
-      dataCtrl.updateTotalHours();
-      const groups = dataCtrl.getGroups();
-      uiCtrl.displayGroups(groups);
+      if (ev.target.tagName === 'I') {
+        const elementId = ev.target.id;
+        dataCtrl.removeGroup(elementId);
+        uiCtrl.clearOutput();
+        dataCtrl.updateTotalHours();
+        const groups = dataCtrl.getGroups();
+        uiCtrl.displayGroups(groups);
+      }
     });
   }
 
   return {
     init() {
-      console.log('START');
       setUpEventListeners();
     },
   };
