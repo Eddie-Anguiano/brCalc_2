@@ -23,7 +23,8 @@ const uiController = (() => {
       return DOMstrings;
     },
     getInputs() {
-      let validCashTips = document.querySelector(DOMstrings.cashTipsInput).value;
+      let validCashTips = document.querySelector(DOMstrings.cashTipsInput)
+        .value;
       let validMdrTips = document.querySelector(DOMstrings.mdrTipsInput).value;
 
       if (validCashTips === '') {
@@ -34,7 +35,9 @@ const uiController = (() => {
       }
       return {
         totalSalesValue: parseFloat(
-          document.querySelector(DOMstrings.totalSalesInput).value.replace(/,/g, ''),
+          document
+            .querySelector(DOMstrings.totalSalesInput)
+            .value.replace(/,/g, ''),
         ),
         ccTipsValue: parseFloat(
           document.querySelector(DOMstrings.ccTipsInput).value.replace(/,/g, ''),
@@ -42,9 +45,15 @@ const uiController = (() => {
         cashTipsValue: parseFloat(validCashTips.replace(/,/g, '')),
         mdrTipsValue: parseFloat(validMdrTips.replace(/,/g, '')),
         nameValue: document.querySelector(DOMstrings.nameInput).value,
-        numberValue: parseFloat(document.querySelector(DOMstrings.numberInput).value),
-        hoursValue: parseFloat(document.querySelector(DOMstrings.hoursInput).value),
-        minutesValue: parseFloat(document.querySelector(DOMstrings.minutesInput).value),
+        numberValue: parseFloat(
+          document.querySelector(DOMstrings.numberInput).value,
+        ),
+        hoursValue: parseFloat(
+          document.querySelector(DOMstrings.hoursInput).value,
+        ),
+        minutesValue: parseFloat(
+          document.querySelector(DOMstrings.minutesInput).value,
+        ),
       };
     },
     displayGroups(groups) {
@@ -54,9 +63,9 @@ const uiController = (() => {
           <table class="table">
             <thead>
               <tr>
-                <th colspan="2"><span class="table__group-name">${item.name}:</span> ${(
-    Math.floor(100 * item.hoursPer) / 100
-  ).toFixed(
+                <th colspan="2"><span class="table__group-name">${
+  item.name
+  }:</span> ${(Math.floor(100 * item.hoursPer) / 100).toFixed(
     2,
   )}hrs &nbsp;&nbsp;&nbsp;&nbsp;<span class="table__group-name"><i class="material-icons --test">person</i></span> ${
     item.numMembers
@@ -65,28 +74,44 @@ const uiController = (() => {
             </thead>
             <tbody>
               <tr>
-                <td>Sales:  $${(Math.floor(100 * item.salesPer) / 100).toFixed(2)}</td>
-                <td>Busser Tips:  $${(Math.floor(10 * item.busTipPer) / 10).toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>CC Tips:  $${(Math.floor(100 * item.cctipsPer) / 100).toFixed(2)}</td>
-                <td>Bar Tips:  $${(Math.floor(10 * item.barTipPer) / 10).toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>Cash Tips:  $${(Math.floor(100 * item.cashPer) / 100).toFixed(2)}</td>
-                <td>Bar Tips:  $${(Math.floor(100 * item.barTipPer) / 100).toFixed(2)}</td>
-              </tr>
-              <tr>
-                <td>Claimed Tips:  $${(Math.floor(100 * item.claimedPer) / 100).toFixed(2)}</td>
-                <td>Total Tip Out:  $${(Math.floor(100 * item.totalTipOUtPer) / 100).toFixed(
+                <td>Sales:  $${(Math.floor(100 * item.salesPer) / 100).toFixed(
     2,
   )}</td>
+                <td>Busser Tips:  $${(
+    Math.floor(10 * item.busTipPer) / 10
+  ).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>CC Tips:  $${(
+    Math.floor(100 * item.cctipsPer) / 100
+  ).toFixed(2)}</td>
+                <td>Bar Tips:  $${(
+    Math.floor(10 * item.barTipPer) / 10
+  ).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>Cash Tips:  $${(
+    Math.floor(100 * item.cashPer) / 100
+  ).toFixed(2)}</td>
+                <td>Runner Tips:  $${(
+    Math.floor(100 * item.expoTipPer) / 100
+  ).toFixed(2)}</td>
+              </tr>
+              <tr>
+                <td>Claimed Tips:  $${(
+    Math.floor(100 * item.claimedPer) / 100
+  ).toFixed(2)}</td>
+                <td>Total Tip Out:  $${(
+    Math.floor(100 * item.totalTipOUtPer) / 100
+  ).toFixed(2)}</td>
               </tr>
             </tbody>
           </table>
         </div>`;
 
-        document.querySelector(DOMstrings.output).insertAdjacentHTML('beforeend', html);
+        document
+          .querySelector(DOMstrings.output)
+          .insertAdjacentHTML('beforeend', html);
       });
     },
     clearOutput() {
@@ -204,7 +229,11 @@ const dataController = (() => {
     }
 
     get totalTipOutPerMember() {
-      return this.busTipOutPerMember + this.barTipOutPerMember + this.expoTipOutPerMember;
+      return (
+        this.busTipOutPerMember
+        + this.barTipOutPerMember
+        + this.expoTipOutPerMember
+      );
     }
 
     get claimedPerMember() {
@@ -214,7 +243,10 @@ const dataController = (() => {
 
   return {
     updateTotalHours() {
-      totalHours = data.groups.reduce((accumulator, item) => accumulator + item.groupHours(), 0);
+      totalHours = data.groups.reduce(
+        (accumulator, item) => accumulator + item.groupHours(),
+        0,
+      );
     },
     setGroup(name, members, hours, minutes) {
       const group = new Group(name, members, hours, minutes);
@@ -279,19 +311,21 @@ const controller = ((uiCtrl, dataCtrl) => {
       submit();
     });
 
-    document.querySelector(DOM.checkoutContainer).addEventListener('keyup', (ev) => {
-      const inputObj = ev.target;
+    document
+      .querySelector(DOM.checkoutContainer)
+      .addEventListener('keyup', (ev) => {
+        const inputObj = ev.target;
 
-      if (
-        inputObj.tagName === 'INPUT'
-        && inputObj.value.includes('.') !== true
-        && inputObj.value !== ''
-      ) {
-        const num = parseFloat(inputObj.value.replace(/,/g, ''));
-        const commaNum = num.toLocaleString();
-        inputObj.value = commaNum;
-      }
-    });
+        if (
+          inputObj.tagName === 'INPUT'
+          && inputObj.value.includes('.') !== true
+          && inputObj.value !== ''
+        ) {
+          const num = parseFloat(inputObj.value.replace(/,/g, ''));
+          const commaNum = num.toLocaleString();
+          inputObj.value = commaNum;
+        }
+      });
 
     document.querySelector(DOM.output).addEventListener('click', (ev) => {
       if (ev.target.tagName === 'I') {
